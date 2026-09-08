@@ -183,3 +183,8 @@ _selftest_work/
 results/
 _scratch/
 *.json.bak
+
+# --- analysis runs ---
+results/
+_*.log
+_*.json
