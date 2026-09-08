@@ -92,15 +92,24 @@ def cmd_generate(cfg: dict, dry: bool = False) -> None:
     print("      then run opt.py / calculate.py as upstream describes.")
 
 
-def cmd_analyze(cfg: dict, dry: bool = False) -> None:
+def cmd_analyze(cfg: dict, dry: bool = False, exp: str | None = None,
+                ads: str | None = None,
+                host_end: float | None = None,
+                dopant_end: float | None = None) -> None:
     from analyze_alloy import run
     o = cfg["output"]
     d = cfg.get("dband", {})
+    # CLI flags win; otherwise fall back to the config file.
+    exp = exp or cfg.get("experimental", {}).get("capacitance_file")
+    ads = ads or cfg.get("adsorption", {}).get("results_file")
+    if host_end is None:
+        host_end = cfg.get("energetics", {}).get("host_end")
+    if dopant_end is None:
+        dopant_end = cfg.get("energetics", {}).get("dopant_end")
     run(root=o["root"], n=cfg["system"]["n"],
         m_elements=d.get("elements", ("Ti", "V")),
         emin=d.get("emin", -10.0), emax=d.get("emax", 0.0),
-        exp=cfg.get("experimental", {}).get("capacitance_file"),
-        ads=cfg.get("adsorption", {}).get("results_file"),
+        exp=exp, ads=ads, host_end=host_end, dopant_end=dopant_end,
         outdir=o.get("results", "results"), dpi=o.get("dpi", 300))
 
 
@@ -113,6 +122,14 @@ def main():
     ap.add_argument("--analyze", action="store_true",
                     help="analyse a finished results tree instead of generating inputs")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--exp", default=None,
+                    help="JSON/CSV of measured capacitance (y, C_g)")
+    ap.add_argument("--ads", default=None,
+                    help="JSON/CSV of adsorption energies (y, E_ads)")
+    ap.add_argument("--host-end", type=float, default=None,
+                    help="total energy of the host end member (Ti3C2O2)")
+    ap.add_argument("--dopant-end", type=float, default=None,
+                    help="total energy of the dopant end member (V3C2O2)")
     a = ap.parse_args()
 
     if not os.path.exists(a.config):
@@ -120,7 +137,8 @@ def main():
     cfg = load_config(a.config)
 
     if a.analyze:
-        cmd_analyze(cfg, dry=a.dry_run)
+        cmd_analyze(cfg, dry=a.dry_run, exp=a.exp, ads=a.ads,
+                    host_end=a.host_end, dopant_end=a.dopant_end)
     else:
         cmd_generate(cfg, dry=a.dry_run)
 

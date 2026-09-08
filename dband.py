@@ -113,8 +113,9 @@ class PDOS:
     Parameters
     ----------
     doscar : path to the DOSCAR file.
-    poscar : path to the POSCAR/CONTCAR that generated it.  If omitted the
-        sibling ``POSCAR`` / ``CONTCAR`` in the same folder is used.
+    poscar : path to the POSCAR/CONTCAR that generated it.  If omitted it is
+        searched for in the DOSCAR folder, then in ``opt/``, then in parent
+        directories (see :meth:`_find_poscar`).
     """
 
     #: VASP lm-decomposed column order (LORBIT = 11), non-spin case.
@@ -145,17 +146,24 @@ class PDOS:
 
         In the generated tree the slab geometry lives in ``opt/POSCAR`` (or as
         ``CONTCAR`` at the case root) while the DOSCAR sits in ``DOS/``, so a
-        straight sibling lookup would fail.  Searching upward stops at the
-        case label directory, so two different compositions can never pick up
-        each other's geometry.
+        straight sibling lookup would fail.
+
+        Levels 0-2 of the walk are guaranteed to stay inside one case
+        directory, so probing ``opt/`` there can never pick up a different
+        composition's geometry; above that only the plain names are checked.
         """
         names = ("POSCAR", "CONTCAR", "poscar", "contcar")
         d = os.path.abspath(self.folder)
-        for _ in range(max_up + 1):
+        for level in range(max_up + 1):
             for cand in names:
                 p = os.path.join(d, cand)
                 if os.path.exists(p):
                     return p
+            if level <= 2:                       # still inside the same case
+                for cand in names:
+                    p = os.path.join(d, "opt", cand)
+                    if os.path.exists(p):
+                        return p
             parent = os.path.dirname(d)
             if parent == d:
                 break
@@ -242,8 +250,8 @@ class PDOS:
         if st["cartesian"]:
             z = pos[:, 2]
         else:
-            z = pos @ st["lattice"][:, 2] if False else \
-                (pos @ st["lattice"])[:, 2]
+            # fractional -> cartesian; column 2 of the lattice is the c axis
+            z = (pos @ st["lattice"])[:, 2]
         z = z - z.min()
 
         m_idx = [i for i, e in enumerate(self.elements) if e in m_elements]
@@ -472,10 +480,17 @@ def scan(root: str = "MXenes_alloy", m_elements: Sequence[str] = ("Ti", "V"),
          ) -> List[Dict]:
     """Walks ``root`` and returns one summary dict per completed calculation."""
     rows = []
+    target = os.path.basename(doscar)          # os.walk gives BASENAMES only
     for dirpath, _, files in os.walk(root):
-        if doscar not in files:
+        if target not in files:
             continue
-        p = os.path.join(dirpath, doscar)
+        # honour the sub-path too, so --doscar "DOS/DOSCAR" does not also
+        # pick up, say, "DOS/PBE0/DOSCAR"
+        if os.sep in doscar:
+            parent = os.path.basename(os.path.dirname(doscar))
+            if os.path.basename(dirpath) != parent:
+                continue
+        p = os.path.join(dirpath, target)
         try:
             d = PDOS(p)
             row = d.summary(m_elements=m_elements, n=n, emin=emin, emax=emax)
@@ -525,6 +540,18 @@ def plot_trend(rows: List[Dict], key: str = "eps_d(Ti)",
     ys = np.array([p[0] for p in pts], dtype=float)
     vs = np.array([p[1] for p in pts], dtype=float)
 
+    # The extra series are passed by the caller aligned with the *input*
+    # `rows`, not with the filtered `pts`.  Restrict them to the same kept
+    # rows so plot_trend never indexes with mismatched lengths.
+    keep_idx = [i for i, r in enumerate(rows)
+                if r.get("y") is not None
+                and r.get(key) is not None
+                and r.get(key) == r.get(key)]
+    extras_aligned: Dict[str, Sequence[float]] = {}
+    if extra:
+        for name, vals in extra.items():
+            extras_aligned[name] = [vals[i] for i in keep_idx]
+
     coef = np.polyfit(ys, vs, 1)
     fit = np.polyval(coef, ys)
     ss_res = float(((vs - fit) ** 2).sum())
@@ -541,13 +568,14 @@ def plot_trend(rows: List[Dict], key: str = "eps_d(Ti)",
     twin = None
     if extra:
         twin = ax.twinx()
-        cmap = plt.cm.Set2(np.linspace(0, 1, max(len(extra), 3)))
-        for k, (name, vals) in enumerate(extra.items()):
+        cmap = plt.cm.Set2(np.linspace(0, 1, max(len(extras_aligned), 3)))
+        for k, (name, vals) in enumerate(extras_aligned.items()):
             v = np.array(vals, dtype=float)
             finite = np.isfinite(v)
-            if finite.sum() < 2 or v[finite].ptp() == 0:
+            # np.ptp(arr) only: ndarray.ptp() was removed in NumPy 2.0
+            if finite.sum() < 2 or np.ptp(v[finite]) == 0:
                 continue
-            vn = (v - np.nanmin(v)) / np.nanptp(v)     # min-max normalise
+            vn = (v - np.nanmin(v)) / (np.nanmax(v) - np.nanmin(v))
             twin.plot(ys[finite], vn[finite], "s--", color=cmap[k % len(cmap)],
                       lw=1.0, ms=4, label=name)
         twin.set_ylabel("normalised (0-1)")

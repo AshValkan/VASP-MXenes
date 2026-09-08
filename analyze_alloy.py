@@ -130,7 +130,7 @@ def run(root: str = "MXenes_alloy", n: int = 2,
                 r["dE_min"] = by_label[lab].get("dE_min")
                 if "E_mix" in by_label[lab]:
                     r["E_mix"] = by_label[lab]["E_mix"]
-        produced["energetics.json"] = write_csv(erows,
+        produced["energetics.csv"] = write_csv(erows,
                                                 os.path.join(outdir, "energetics.csv")) or ""
         print(f"      {len(erows)} optimised structures")
     except Exception as e:                                     # noqa: BLE001
@@ -150,28 +150,36 @@ def run(root: str = "MXenes_alloy", n: int = 2,
 
     print("[4/4] plotting ...")
     for key in ("eps_d(Ti)", "eps_d(V)"):
-        if not all(key in r for r in rows):
+        # Use "enough rows carry the key", not "every row does": the y = 0
+        # end member has no V and y = 3 has no Ti, so an all() test would
+        # silently suppress the plot for exactly the interesting cases.
+        sub = [r for r in rows if r.get(key) is not None]
+        if len(sub) < 2:
             continue
         try:
+            # Sanitise the WHOLE key -- splitting on "(" would turn both
+            # eps_d(Ti) and eps_d(V) into "eps_d" and they would overwrite
+            # each other on disk.
+            stem = "".join(ch if ch.isalnum() else "_" for ch in key).strip("_")
             p, r2 = plot_trend(
-                rows, key=key,
-                out=os.path.join(outdir, f"{key.split('(')[0].strip()}_vs_y.png"),
-                dpi=dpi)
-            produced[f"{key}_vs_y.png"] = p
+                sub, key=key,
+                out=os.path.join(outdir, f"{stem}_vs_y.png"), dpi=dpi)
+            produced[os.path.basename(p)] = p
             print(f"      {key}: R^2 = {r2:.4f}  -> {p}")
         except Exception as e:                                 # noqa: BLE001
             print(f"      [skip] {key}: {e}")
 
     # combined figure: eps_d + whichever extra series are available
-    if all("eps_d(Ti)" in r for r in rows) and len(rows) >= 2:
+    sub = [r for r in rows if r.get("eps_d(Ti)") is not None]
+    if len(sub) >= 2:
         extra = {}
         for name in ("E_ads(H) [eV]", "C_g [F/g] (measured)"):
-            vals = [r.get(name, np.nan) for r in rows]
+            vals = [r.get(name, np.nan) for r in sub]
             if sum(np.isfinite(v) for v in vals) >= 2:
                 extra[name] = vals
         try:
             p, r2 = plot_trend(
-                rows, key="eps_d(Ti)", extra=extra or None,
+                sub, key="eps_d(Ti)", extra=extra or None,
                 out=os.path.join(outdir, "combined_trend.png"), dpi=dpi,
                 title=r"$\varepsilon_d$ vs experiment, "
                       r"Ti$_{3-y}$V$_y$C$_2$O$_2$")

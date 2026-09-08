@@ -386,6 +386,60 @@ def test_energetics():
 
 
 # --------------------------------------------------------------------------- #
+#  4b. End-to-end: fabricated results tree -> full analysis pipeline
+# --------------------------------------------------------------------------- #
+
+def test_e2e_analyze():
+    print("\n[4b] end-to-end analyse on a fabricated results tree")
+
+    from dband import scan as dband_scan, plot_trend
+    from energetics import collect_energies, rank_configurations, hull_table
+    from make_fake_results import total_energy as fE, write_fake_outcar
+    from make_fake_results import write_synthetic_doscar
+    from alloy import AlloyMX as _A
+    import numpy as np
+
+    for y in (0.0, 0.5, 1.0, 1.5, 3.0):
+        for pat in ("outer", "inner", "sqs"):
+            if y == 1.5 and pat == "inner":
+                continue                       # physically impossible
+            mx = _A(y=y, pattern=pat, root=WORK)
+            try:
+                mx.write_inputs(encut=550, vdw="d3")
+            except ValueError:
+                continue
+            case = os.path.join(WORK, mx.label, "ABC", "HM")
+            write_fake_outcar(os.path.join(case, "opt", "OUTCAR"), fE(y, pat))
+            with open(os.path.join(case, "opt", "POSCAR")) as f, \
+                    open(os.path.join(case, "CONTCAR"), "w") as g:
+                g.write(f.read())
+            write_synthetic_doscar(case, y, pat, mx)
+
+    rows = dband_scan(WORK)
+    check("dband.scan finds every fabricated case (>= 12)",
+          len(rows) >= 12, f"got {len(rows)}")
+
+    erows = rank_configurations(collect_energies(WORK))
+    check("rank_configurations runs on the fabricated tree",
+          len(erows) >= 12, f"got {len(erows)}")
+    erows = hull_table(erows, -600.0, -607.5, n=2)
+    for y in (1.0, 1.5):
+        grp = sorted([r for r in erows if r["y"] == y],
+                     key=lambda r: r["E"])
+        ps = [r["pattern"] for r in grp]
+        check(f"y={y}: pattern ranking respects the model ordering",
+              ps[0] == "outer" and "sqs" in ps[:2], str(ps))
+
+    # plot_trend with extra series must not crash on numpy 2.x
+    p = os.path.join(WORK, "trend.png")
+    plot_trend(rows, key="eps_d(Ti)",
+               extra={"C_g": [r.get("eps_d(Ti)", np.nan) for r in rows]},
+               out=p)
+    check("plot_trend runs with extra series on numpy 2.x",
+          os.path.exists(p))
+
+
+# --------------------------------------------------------------------------- #
 
 def main(verbose: bool = False):
     os.makedirs(WORK, exist_ok=True)
@@ -398,6 +452,7 @@ def main(verbose: bool = False):
         test_adsorption()
         test_neb()
         test_energetics()
+        test_e2e_analyze()
     finally:
         if not verbose:
             shutil.rmtree(WORK, ignore_errors=True)
