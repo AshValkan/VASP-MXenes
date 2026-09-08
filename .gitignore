@@ -188,3 +188,8 @@ _scratch/
 results/
 _*.log
 _*.json
+
+# --- analysis runs ---
+results/
+_*.log
+_*.json
