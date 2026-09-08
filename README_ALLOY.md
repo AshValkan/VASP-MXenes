@@ -1,6 +1,10 @@
 # Alloyed MXene extension (fork of diegonti/VASP-MXenes)
 
-> **Upstream README** (`README.md`) documents the original single-element
+> **本文件是分支改动日志（dev notes）。项目主文档请看 [`README.md`](README.md)；
+> 上游原作者文档见 [`README_upstream.md`](README_upstream.md)。**
+> 下面保留的是分支开发过程中的详细记录（尤其是修复上游缺陷的完整清单）。
+
+> **Upstream README** (`README_upstream.md`) documents the original single-element
 > workflow and is unchanged. This file documents what **this fork** adds.
 
 This fork re-targets the upstream toolkit at the system studied in

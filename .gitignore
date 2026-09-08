@@ -193,3 +193,6 @@ _*.json
 results/
 _*.log
 _*.json
+dband_results.json
+DOSout/
+CONTCARout/
