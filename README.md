@@ -8,7 +8,7 @@
 > 并把 **d 带中心**作为核心描述符。
 >
 > 上游工具集作者：**Diego Ontiveros**（原文文档见 [`README_upstream.md`](README_upstream.md)）。
-> 分支扩展：alloyed-MXene 工作流（个人信息已按隐私要求移除）。
+
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### 要回答的三个科学问题
 
-| | 问题 | 本仓库提供的手段 |
+| | 问题 | 本仓库提供的 |
 |---|---|---|
 | Q1 | V 原子在 M 位**占据外层还是内层**？ | `alloy.py` 生成 `outer`/`inner`/`sqs`/… 显式构型；`energetics.site_preference()` 给出能量差 |
 | Q2 | V 的引入是否使 **d 带中心向费米能级移动**？ | `dband.py` 计算分元素、分原子层的 ε_d，并给出线性拟合的 **R²** |
@@ -40,7 +40,7 @@
 **工程化**
 - `alloy_config.yaml` 是体系与计算参数的**唯一来源**，论文中的每个数字都可追溯
 - `tests/selftest.py`：**68 项自检，约 3 秒，不需要 VASP**
-- `tests/make_fake_results.py`：伪造完整结果树，在真 VASP 跑通前即可预演分析流程
+- `tests/make_fake_results.py`：随机生成完整结果树，在真机 VASP 跑通前即可预演分析流程
 
 ---
 
@@ -130,16 +130,11 @@ MXenes_alloy/Ti2V1C2O2_s2x2_outer/ABC/HM/
 ### 1. 获取代码
 
 ```bash
-# 方式 A：在 GitHub 上 fork diegonti/VASP-MXenes，然后
-git clone https://github.com/<你的用户名>/VASP-MXenes.git
+# 直接clone该仓库
+git clone https://github.com/AshValkan/VASP-MXenes.git
 cd VASP-MXenes
 git remote add upstream https://github.com/diegonti/VASP-MXenes.git
 git checkout alloy-mxene-tiv        # 若 fork 未带该分支：git fetch origin alloy-mxene-tiv
-
-# 方式 B：从上游裸克隆后自建分支
-git clone https://github.com/diegonti/VASP-MXenes.git
-cd VASP-MXenes
-git checkout -b alloy-mxene-tiv
 ```
 
 ### 2. Python 环境
@@ -167,14 +162,7 @@ pip install pymatgen                # 可选：NEB 的 IDPP
 ### 4. 集群脚本
 
 把你的作业调度脚本放到 `car/script`（上游示例为 IQTC / MN4 的 SGE 脚本），
-VASP 可执行文件名也在此处指定。
-
-### 5. 设置 git 身份（首次提交前）
-
-```bash
-git config user.name  "你的名字"
-git config user.email "你的邮箱"
-```
+VASP 二进制也应该在这里指定。
 
 ---
 
@@ -315,8 +303,8 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
 ## 八、注意事项
 
 **许可与合规**
-- VASP 与 POTCAR 均需授权，**不得**随仓库公开分发。公开 fork 前请确认 `PP/` 已被 `.gitignore` 排除。
-- 上游原作者文档已完整保留在 `README_upstream.md`。
+- VASP 与 POTCAR 均需授权，本仓库**不涉及**公开分发。提交前请确认 `PP/` 已被 `.gitignore` 排除。
+- 上游原作者文档已完整保留在 `README_upstream.md`，以供参考。
 
 **计算参数**
 - `LORBIT = 11` 是 `dband.py` 的硬前提；缺少它 DOSCAR 无 lm 分解，ε_d 无法计算。
@@ -346,11 +334,3 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
   论文中更可读的画法是绘制 −E_ads 使其与 ε_d 同步向上。脚本保留你的符号约定权。
 
 ---
-
-## 相关文档
-
-- [`README_upstream.md`](README_upstream.md) — 上游原作者工作流文档（原文保留）
-- `README_ALLOY.md` — 分支改动说明
-- 课题实验方案与论文手稿草稿：`../outputs/`
-  （`实验方案_合金化MXene电子结构调控与超级电容器储能性能研究.md`、
-  `硕士论文手稿草稿_合金化MXene.txt`）
