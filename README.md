@@ -8,7 +8,7 @@
 > 并把 **d 带中心**作为核心描述符。
 >
 > 上游工具集作者：**Diego Ontiveros**（原文文档见 [`README_upstream.md`](README_upstream.md)）。
-> 分支扩展：王耀宇（南京信息工程大学），导师 于峰。
+> 分支扩展：alloyed-MXene 工作流（个人信息已按隐私要求移除）。
 
 ---
 

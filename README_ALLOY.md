@@ -11,7 +11,7 @@ This fork re-targets the upstream toolkit at the system studied in
 
 > **合金化 MXene 电子结构调控与超级电容器储能性能研究**
 > (Alloyed-MXene electronic-structure modulation for supercapacitor energy storage)
-> Wang Yaoyu, NUIST, supervisor Prof. Yu Feng
+> Personal information removed per privacy requirements.
 
 i.e. **Ti<sub>3−y</sub>V<sub>y</sub>C<sub>2</sub>O<sub>2</sub>** — a *binary* M-sublattice
 solid solution, in supercells, with the d-band centre as the central descriptor.
@@ -192,6 +192,5 @@ git push -u origin alloy-mxene-tiv
 
 ---
 
-*Fork extensions: Wang Yaoyu (王耀宇), Nanjing University of Information Science
-and Technology, 2026. Upstream toolkit: Diego Ontiveros —
+*Fork extensions: alloyed-MXene workflow, 2026. Upstream toolkit: Diego Ontiveros —
 [github.com/diegonti/VASP-MXenes](https://github.com/diegonti/VASP-MXenes).*

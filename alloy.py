@@ -22,8 +22,9 @@ primitive 1x1 cell.  This module extends it with:
   6. INCAR generation with DFT+U, vdW (DFT-D3) and the per-species LDAU
      arrays written in POSCAR order (a hard requirement of VASP).
 
-Author of the fork extensions:  Wang Yaoyu (NUIST) -- 2026
-Upstream:                       Diego Ontiveros (github.com/diegonti/VASP-MXenes)
+Fork extensions: alloyed-MXene workflow (binary M-sublattice, d-band centre,
+                 adsorption/NEB/energetics). See README.md and README_ALLOY.md.
+Upstream:        github.com/diegonti/VASP-MXenes
 """
 
 from __future__ import annotations
