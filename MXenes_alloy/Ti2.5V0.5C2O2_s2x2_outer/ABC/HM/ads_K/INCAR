@@ -1,0 +1,49 @@
+SYSTEM = Ti2.5V0.5C2O2_s2x2_outer_adsK
+
+# ---------- electronic ----------
+ENCUT  = 550
+EDIFF  = 1e-05
+EDIFFG = -0.02
+ISPIN  = 2
+ISMEAR = 0
+SIGMA  = 0.1
+LREAL  = AUTO
+ALGO   = Normal
+NELMIN = 4
+AMIX   = 0.2
+BMIX   = 0.0001
+NWRITE = 1
+NELM   = 200
+PREC   = Accurate
+GGA    = PE
+
+# ---------- Hubbard / vdW ----------
+LDAU   = .TRUE.
+LASPH  = .TRUE.
+LDAUTYPE = 2
+LDAUPRINT = 2
+LDAUU = 2.50 2.50 0.00 0.00 0.00
+LDAUJ = 0.00 0.00 0.00 0.00 0.00
+LDAUL = 2 2 -1 -1 -1
+IVDW   = 11
+
+# ---------- ionic / IO ----------
+ISTART = 0
+INIWAV = 1
+NWRITE = 1
+LCHARG = .TRUE.
+MAGMOM = 10*1.0  2*1.0  8*0.6  8*0.6 2*0
+
+# ---------- calculation specific ----------
+IBRION  = 2
+NSW     = 200
+ISIF    = 2
+LWAVE   = .FALSE.
+
+# ----------------------------------------
+# Ti2.5V0.5C2O2  supercell 2x2x1  pattern=outer  seed=42
+# species order: Ti V C O  counts: 10 2 8 8
+
+LMAXMIX = 4
+AMIX_MAG = 0.2
+BMIX_MAG = 0.0001

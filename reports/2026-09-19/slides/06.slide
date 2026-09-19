@@ -1,0 +1,67 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <Box style={{ height: 72, background: '#0E3F8C', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>关键问题诊断与解决方案</Text>
+        <Text style={{ fontSize: 15, color: '#A9C4EC', letterSpacing: 2 }}>02 · 问题攻坚</Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 16, padding: '20px 40px' }}>
+
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 24, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 24px' }}>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 8, justifyContent: 'center' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <Box style={{ width: 30, height: 30, background: '#E0573B', borderRadius: 6, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>SCF 振荡发散</Text>
+                </Box>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.7 }}>
+                    y=1.0 案例长期不收敛：<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>ALGO=All</span> 发散、<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>ALGO=Fast</span> 卡在 5–6 eV。<br />根因：电荷密度大幅振荡。<br />处置：线性混合稳幅 <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>AMIX=0.2 / BMIX=0.0001</span> + SIGMA 提速重跑。
+                </Text>
+            </Box>
+            <Box style={{ width: 440, justifyContent: 'center' }}>
+                <CodeBlock
+                    code={`ALGO   = Normal
+AMIX   = 0.2
+BMIX   = 0.0001
+SIGMA  = 0.10`}
+                    language='bash'
+                    width={440}
+                    fontSize={14}
+                />
+            </Box>
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'row', gap: 24, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 24px' }}>
+            <Box style={{ flex: 1, flexDirection: 'column', gap: 8, justifyContent: 'center' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <Box style={{ width: 30, height: 30, background: '#E0573B', borderRadius: 6, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+                    </Box>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>MPI 集群全挂（网络劫持）</Text>
+                </Box>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.7 }}>
+                    策略路由将 <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>127.0.0.1</span> 劫持至失效 WSL2 中继，所有本机 TCP / MPI 静默丢弃。<br />根因：<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>ip rule priority 1 ipproto tcp lookup 127</span>。<br />处置：删除规则 + <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>@reboot cron</span> 自愈。
+                </Text>
+            </Box>
+            <Box style={{ width: 440, justifyContent: 'center' }}>
+                <CodeBlock
+                    code={`sudo ip rule del priority 1 \\
+  ipproto tcp lookup 127
+# /etc/cron.d/recover-loopback
+@reboot root ip rule del ...`}
+                    language='bash'
+                    width={440}
+                    fontSize={14}
+                />
+            </Box>
+        </Box>
+
+    </Box>
+
+    <Box style={{ height: 59, background: '#F7F9FC', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 13, color: '#8B97A8' }}>V 合金化 Ti₃C₂ MXene · DFT 计算进展汇报</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#1E4FA8' }}>06 / 09</Text>
+    </Box>
+
+</Slide>

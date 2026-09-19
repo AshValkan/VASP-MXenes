@@ -1,0 +1,48 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#0E3F8C', position: 'relative', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <svg width={1280} height={300} viewBox='0 0 1280 300' style={{ position: 'absolute', bottom: 0, left: 0, opacity: 0.22 }}>
+        {[30, 86, 142, 198, 254, 310, 366, 422, 478, 534, 590, 646, 702, 758, 814, 870, 926, 982, 1038, 1094, 1150, 1206, 1262].map((cx, i) => (
+            <circle key={'o1' + i} cx={cx} cy={42} r={9} fill='#E8EFF8' />
+        ))}
+        {[58, 114, 170, 226, 282, 338, 394, 450, 506, 562, 618, 674, 730, 786, 842, 898, 954, 1010, 1066, 1122, 1178, 1234].map((cx, i) => (
+            <circle key={'ti1' + i} cx={cx} cy={96} r={16} fill='#3D7BD9' />
+        ))}
+        {[30, 86, 142, 198, 254, 310, 366, 422, 478, 534, 590, 646, 702, 758, 814, 870, 926, 982, 1038, 1094, 1150, 1206, 1262].map((cx, i) => (
+            <circle key={'c' + i} cx={cx} cy={152} r={10} fill='#8B97A8' />
+        ))}
+        {[58, 114, 170, 226, 282, 338, 394, 450, 506, 562, 618, 674, 730, 786, 842, 898, 954, 1010, 1066, 1122, 1178, 1234].map((cx, i) => (
+            <circle key={'tv' + i} cx={cx} cy={208} r={16} fill={i % 4 === 1 ? '#FFC107' : '#3D7BD9'} />
+        ))}
+        {[30, 86, 142, 198, 254, 310, 366, 422, 478, 534, 590, 646, 702, 758, 814, 870, 926, 982, 1038, 1094, 1150, 1206, 1262].map((cx, i) => (
+            <circle key={'o2' + i} cx={cx} cy={264} r={9} fill='#E8EFF8' />
+        ))}
+    </svg>
+
+    <Box style={{ position: 'relative', zIndex: 1, height: 720, padding: '88px 100px 56px 100px', flexDirection: 'column' }}>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+            <Box style={{ width: 46, height: 46, background: '#FFC107', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+                <FAIcon name='atom' style={{ fill: '#0E3F8C', width: 28, height: 28 }} />
+            </Box>
+            <Text style={{ fontSize: 19, color: '#E8EFF8', letterSpacing: 5 }}>MXene 第一性原理计算 · 进展汇报</Text>
+        </Box>
+
+        <Box style={{ flexDirection: 'column', gap: 22, marginTop: 64 }}>
+            <Text style={{ fontSize: 56, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.35 }}>
+                V 合金化 Ti₃C₂ MXene 体系<br />DFT 计算进展汇报
+            </Text>
+            <Text style={{ fontSize: 19, color: '#A9C4EC', letterSpacing: 1 }}>
+                First-Principles Progress of V-Alloyed Ti₃C₂ MXenes for Supercapacitor Applications
+            </Text>
+            <Box style={{ width: 96, height: 5, background: '#FFC107', marginTop: 6 }} />
+        </Box>
+
+        <Box style={{ flexDirection: 'row', gap: 46, marginTop: 'auto', marginBottom: 12 }}>
+            <Text style={{ fontSize: 17, color: '#E8EFF8' }}>汇报人：Atlas</Text>
+            <Text style={{ fontSize: 17, color: '#E8EFF8' }}>计算平台：VASP 6.4.2 · MPI 并行</Text>
+            <Text style={{ fontSize: 17, color: '#E8EFF8' }}>2026 年 9 月 15 日</Text>
+        </Box>
+
+    </Box>
+
+</Slide>

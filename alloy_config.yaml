@@ -51,9 +51,9 @@ dft:
   encut: 550               # 平面波截断能 (eV)
   vdw: d3                  # d3 / d3bj / d2 / optb86b / none
   spin: true
-  ediff: 1.0e-06           # 电子步收敛 (eV)
-  ediffg: -0.01            # 力收敛 (eV/A)
-  sigma: 0.05
+  ediff: 1.0e-05           # 电子步收敛 (eV)
+  ediffg: -0.02            # 力收敛 (eV/A)
+  sigma: 0.10
   lorbit: 11               # 必需: lm 分解 PDOS，dband.py 依赖它
   nedos: 5000
   dipole: true             # LDIPOL/IDIPOL=3，slab 必需
@@ -66,7 +66,7 @@ dft:
     V: 2.5
 
   # k 点: 针对**原胞**给定，超胞会自动除以 sx, sy 保持倒空间密度
-  kpoints_primitive: [7, 7, 1]
+  kpoints_primitive: [6, 6, 1]
 
 # ---------------------------------------------------------------------------
 #  d 带中心分析

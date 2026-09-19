@@ -1,0 +1,102 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <Box style={{ height: 72, background: '#0E3F8C', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>性能提升与后续计划</Text>
+        <Text style={{ fontSize: 15, color: '#A9C4EC', letterSpacing: 2 }}>03 · 后续计划</Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 26, padding: '22px 40px' }}>
+
+        <Box style={{ flex: 1.15, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 22px', flexDirection: 'column', gap: 16 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>单电子步耗时对比</Text>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Text style={{ fontSize: 15, color: '#4A5568', width: 130 }}>单进程串行</Text>
+                <Box style={{ flex: 1, background: '#E4E8EF', borderRadius: 5, height: 30 }}>
+                    <Box style={{ width: '100%', height: 30, background: '#8B97A8', borderRadius: 5, justifyContent: 'center', paddingLeft: 12 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>305 s</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Text style={{ fontSize: 15, color: '#4A5568', width: 130 }}>MPI-5 并行</Text>
+                <Box style={{ flex: 1, background: '#E4E8EF', borderRadius: 5, height: 30 }}>
+                    <Box style={{ width: '22%', height: 30, background: '#1E4FA8', borderRadius: 5, justifyContent: 'center', paddingLeft: 10 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>69.5 s</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 2 }}>
+                <Box style={{ background: '#FFC107', borderRadius: 6, padding: '4px 12px' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#0E3F8C' }}>加速 4.4×</Text>
+                </Box>
+                <Text style={{ fontSize: 14, color: '#4A5568' }}>4 任务并发下约 165 s/步（带宽共享代价）</Text>
+            </Box>
+
+            <Box style={{ marginTop: 'auto', background: '#0E3F8C', borderRadius: 8, padding: '12px 16px' }}>
+                <Text style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 1.6 }}>
+                    MPI 修复使完整成分扫描由预估 2–4 周压缩至 2–4 天
+                </Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 12 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>后续计算路线</Text>
+
+            <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                <Box style={{ width: 28, height: 28, borderRadius: 14, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: 'bold' }}>1</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', gap: 2, paddingTop: 2 }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1A2230' }}>弛豫收敛</Text>
+                    <Text style={{ fontSize: 13, color: '#4A5568' }}>预计 2–4 天</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                <Box style={{ width: 28, height: 28, borderRadius: 14, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: 'bold' }}>2</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', gap: 2, paddingTop: 2 }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1A2230' }}>DOS / d 带中心</Text>
+                    <Text style={{ fontSize: 13, color: '#4A5568' }}>CONTCAR → ε_d 组分趋势</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                <Box style={{ width: 28, height: 28, borderRadius: 14, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: 'bold' }}>3</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', gap: 2, paddingTop: 2 }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1A2230' }}>形成能趋势</Text>
+                    <Text style={{ fontSize: 13, color: '#4A5568' }}>占位偏好 · 凸包混合能</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                <Box style={{ width: 28, height: 28, borderRadius: 14, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: 'bold' }}>4</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', gap: 2, paddingTop: 2 }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1A2230' }}>CI-NEB 离子迁移势垒</Text>
+                    <Text style={{ fontSize: 13, color: '#4A5568' }}>吸附能 + 扩散能垒</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ marginTop: 'auto', background: '#0E3F8C', borderRadius: 8, padding: '12px 16px' }}>
+                <Text style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 1.6 }}>
+                    链路就绪：opt → DOS → analyze 一键产出论文图表
+                </Text>
+            </Box>
+        </Box>
+
+    </Box>
+
+    <Box style={{ height: 59, background: '#F7F9FC', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 13, color: '#8B97A8' }}>V 合金化 Ti₃C₂ MXene · DFT 计算进展汇报</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#1E4FA8' }}>08 / 09</Text>
+    </Box>
+
+</Slide>

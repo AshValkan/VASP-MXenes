@@ -1,0 +1,47 @@
+SYSTEM = Ti3V0C2O2_s2x2_inner_BS
+
+# ---------- electronic ----------
+ENCUT  = 550
+EDIFF  = 1e-05
+EDIFFG = -0.02
+ISPIN  = 2
+ISMEAR = 0
+SIGMA  = 0.1
+LREAL  = AUTO
+ALGO   = Normal
+NELMIN = 4
+NELM   = 200
+PREC   = Accurate
+GGA    = PE
+
+# ---------- Hubbard / vdW ----------
+LDAU   = .TRUE.
+LASPH  = .TRUE.
+LDAUTYPE = 2
+LDAUPRINT = 2
+LDAUU  = 2.50  0.00  0.00
+LDAUJ  = 0.00  0.00  0.00
+LDAUL  = 2  -1  -1
+IVDW   = 11
+
+# ---------- ionic / IO ----------
+ISTART = 0
+INIWAV = 1
+NWRITE = 2
+LCHARG = .FALSE.
+MAGMOM = 12*1.0  8*0.6  8*0.6
+
+# ---------- calculation specific ----------
+IBRION  = -1
+NSW     = 0
+LORBIT  = 11
+LWAVE   = .TRUE.
+ICHARG  = 11
+LDIPOL = .TRUE.
+IDIPOL = 3
+DIPOL  = 0.5 0.5 0.5
+
+# ----------------------------------------
+# Ti3V0C2O2  supercell 2x2x1  pattern=inner  seed=42
+# species order: Ti C O  counts: 12 8 8
+

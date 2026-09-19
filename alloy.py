@@ -679,7 +679,29 @@ class AlloyMX(MX):
             for k, v in extra.items():
                 lines.append(f"{k:7s} = {v}")
             if dipol:
-                lines += ["LDIPOL = .TRUE.", "IDIPOL = 3", "DIPOL  = 0.5 0.5 0.5"]
+                # DIPOL must sit at the slab center; hardcoding 0.5 0.5 0.5
+                # puts the reference into the vacuum layer and destabilises
+                # SCF (charge sloshing via the sawtooth potential feedback).
+                zc = 0.5
+                try:
+                    with open(d + "POSCAR") as pf:
+                        pl = pf.read().splitlines()
+                    zi = []
+                    for l in pl[8:]:
+                        t = l.split()
+                        if len(t) >= 3:
+                            try:
+                                zi.append(float(t[2]))
+                            except ValueError:
+                                pass
+                    if zi:
+                        if max(zi) - min(zi) > 0.5:  # wrapped slab
+                            zi = [z - 1.0 if z > 0.5 else z for z in zi]
+                        zc = ((max(zi) + min(zi)) / 2.0) % 1.0
+                except OSError:
+                    pass
+                lines += ["LDIPOL = .TRUE.", "IDIPOL = 3",
+                          f"DIPOL  = 0.5 0.5 {zc:.4f}"]
             lines += ["", "# " + "-" * 40,
                       f"# {self.mxName}  supercell {self.sx}x{self.sy}x{self.sz}"
                       f"  pattern={self.pattern}  seed={self.seed}",

@@ -178,7 +178,9 @@ class PDOS:
         # --- locate the "emax emin NEDOS efermi" line ----------------------
         nedos_idx = None
         for i, t in enumerate(lines[:12]):
-            if len(t) == 4:
+            # VASP >= 6.x writes 5 fields (emax emin NEDOS efermi weight);
+            # older builds write 4.  Accept both.
+            if 4 <= len(t) <= 5:
                 try:
                     if int(float(t[2])) > 10:
                         nedos_idx = i
@@ -191,10 +193,19 @@ class PDOS:
         self.NEDOS = int(float(lines[nedos_idx][2]))
         self.efermi = float(lines[nedos_idx][3])
 
-        # header: emax/emin line, then one column-description line, then data
-        start = nedos_idx + 2
+        # --- where does the total-DOS block start? --------------------------
+        # Real VASP DOSCAR: data begins on the line right after the
+        # emax/emin/NEDOS/efermi header.  Synthetic/mock files (and a few
+        # third-party writers) insert a column-description line such as
+        # "energy dos int" -- detect it via a non-numeric first token.
+        start = nedos_idx + 1
+        if start < len(lines):
+            try:
+                float(lines[start][0])
+            except (ValueError, IndexError):
+                start += 1                       # column-description line
         ncol = len(lines[start])
-        self.spin = ncol >= 7                    # sp: E, up, dn, iup, idn(+..)
+        self.spin = ncol >= 5                    # sp: E, up, dn, iup, idn
         self.nspin_cols = ncol
 
         stride = self.NEDOS + 1                  # +1 -> separator line
@@ -214,13 +225,24 @@ class PDOS:
             self.total_up = self.total_dn = None
 
         # --- per-atom lm-decomposed blocks ---------------------------------
-        # Some VASP builds write a blank/echo line between blocks, some do
-        # not.  Peek at the line right after the total block: if it has the
-        # same column count as the data, there is no separator.
+        # Between blocks VASP >= 6 repeats the emax/emin/NEDOS/efermi header
+        # line; some writers emit a blank line instead; some emit nothing.
+        # A separator is therefore: an empty line, or a 4-5 token line whose
+        # third field round-trips to NEDOS.
+        def _is_sep(t) -> bool:
+            if not t:
+                return True
+            if 4 <= len(t) <= 5:
+                try:
+                    return int(float(t[2])) == self.NEDOS
+                except (ValueError, IndexError):
+                    return False
+            return False
+
         stride = self.NEDOS + 1
         probe = start + self.NEDOS
-        if probe < len(lines) and len(lines[probe]) == ncol:
-            stride = self.NEDOS
+        if probe < len(lines) and not _is_sep(lines[probe]):
+            stride = self.NEDOS                  # blocks are back-to-back
         self.stride = stride
 
         norb = 18 if self.spin else 9

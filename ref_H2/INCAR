@@ -1,0 +1,24 @@
+SYSTEM = H2 reference (CHE)
+# electronic settings mirror the slab runs for E_ads cancellation
+ENCUT  = 550
+EDIFF  = 1e-05
+EDIFFG = -0.02
+ISPIN  = 2
+ISMEAR = 0
+SIGMA  = 0.05
+LREAL  = .FALSE.
+ALGO   = Normal
+NELM   = 200
+PREC   = Accurate
+GGA    = PE
+IVDW   = 11
+# ionic
+IBRION = 2
+ISIF   = 2
+NSW    = 20
+# IO
+ISTART = 0
+INIWAV = 1
+LWAVE  = .FALSE.
+LCHARG = .FALSE.
+MAGMOM = 2*0.5

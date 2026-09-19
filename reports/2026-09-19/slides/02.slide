@@ -1,0 +1,52 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'row', padding: 0 }}>
+
+    <Box style={{ width: 400, height: 720, background: '#0E3F8C', padding: '80px 56px 64px 56px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 46, fontWeight: 'bold', color: '#FFFFFF' }}>目录</Text>
+        <Text style={{ fontSize: 17, color: '#A9C4EC', letterSpacing: 7, marginTop: 12 }}>CONTENTS</Text>
+        <Box style={{ width: 60, height: 4, background: '#FFC107', marginTop: 26 }} />
+        <Text style={{ fontSize: 15, color: '#A9C4EC', marginTop: 'auto', lineHeight: 1.9 }}>
+            Ti₃C₂ 基 V 合金化 MXene<br />成分扫描 · 弛豫计算 · 进度综述
+        </Text>
+    </Box>
+
+    <Box style={{ flex: 1, height: 720, padding: '80px 90px 80px 90px', flexDirection: 'column', justifyContent: 'center', gap: 40 }}>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 26 }}>
+            <Box style={{ width: 58, height: 58, background: '#1E4FA8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>01</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 8, paddingTop: 4 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>项目背景与科学目标</Text>
+                <Text style={{ fontSize: 16, color: '#4A5568', lineHeight: 1.6 }}>
+                    fork 定位 · 三科学问题 · 合金化核心功能
+                </Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 26 }}>
+            <Box style={{ width: 58, height: 58, background: '#1E4FA8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>02</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 8, paddingTop: 4 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>计算方法、平台与工作流</Text>
+                <Text style={{ fontSize: 16, color: '#4A5568', lineHeight: 1.6 }}>
+                    PBE+U 关键参数 · 自动化链路 · MPI 集群环境
+                </Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 26 }}>
+            <Box style={{ width: 58, height: 58, background: '#1E4FA8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>03</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 8, paddingTop: 4 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>问题攻坚与当前进展</Text>
+                <Text style={{ fontSize: 16, color: '#4A5568', lineHeight: 1.6 }}>
+                    SCF / MPI 根因修复 · 并行状态 · 后续路线
+                </Text>
+            </Box>
+        </Box>
+
+    </Box>
+
+</Slide>

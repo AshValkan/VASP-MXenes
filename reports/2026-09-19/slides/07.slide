@@ -1,0 +1,69 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <Box style={{ height: 72, background: '#0E3F8C', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>当前计算状态与核心结果</Text>
+        <Text style={{ fontSize: 15, color: '#A9C4EC', letterSpacing: 2 }}>03 · 当前进展</Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 16, padding: '20px 40px' }}>
+
+        <Box style={{ flexDirection: 'row', gap: 16 }}>
+            <Box style={{ flex: 1, background: '#0E3F8C', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#FFFFFF' }}>4 / 4 <span style={{ fontSize: 16 }}>弛豫收敛</span></Text>
+                <Text style={{ fontSize: 14, color: '#CFE0F5' }}>EDIFFG = -0.02 eV/Å 全部达标</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#0E3F8C' }}>4 / 4 DOS 完成</Text>
+                <Text style={{ fontSize: 14, color: '#4A5568' }}>k=5×5×1，ISMEAR=-5，NEDOS=5000</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#0E3F8C' }}>R² ≈ 0.77</Text>
+                <Text style={{ fontSize: 14, color: '#4A5568' }}>ε_d(Ti)–y 线性拟合（ε_d(V)：0.75）</Text>
+            </Box>
+            <Box style={{ flex: 1, background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#0E3F8C' }}>N(E_F) ×18</Text>
+                <Text style={{ fontSize: 14, color: '#4A5568' }}>费米面态密度 0.55 → 9.9 states</Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>四成分点计算结果汇总（2026-09-17 分析产出）</Text>
+            <Table
+                style={{ width: '100%', flex: 1 }}
+                defaultTextStyle={{ fontSize: 16, textAlign: 'center', color: '#1A2230' }}
+                defaultCellStyle={{
+                    border: {
+                        left: { width: 1, color: '#D6DCE5' },
+                        right: { width: 1, color: '#D6DCE5' },
+                        top: { width: 1, color: '#D6DCE5' },
+                        bottom: { width: 1, color: '#D6DCE5' },
+                    },
+                }}
+                cells={[
+                    [
+                        { text: '成分点', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                        { text: '弛豫 E0 (eV)', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                        { text: '磁矩 (μB)', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                        { text: 'ε_d(Ti) (eV)', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                        { text: 'ε_d(V) (eV)', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                        { text: 'N(E_F) (states)', textStyle: { bold: true, color: '#FFFFFF' }, cellStyle: { background: { color: '#1E4FA8' } } },
+                    ],
+                    ['Ti₃C₂O₂ (y=0)', '-236.32', '0.00', '-3.57', '—', '0.55'],
+                    ['Ti₂.₅V₀.₅C₂O₂ (y=0.5)', '-234.98', '0.01', '-3.60', '-3.37', '7.90'],
+                    ['Ti₂V₁C₂O₂ (y=1.0)', '-233.11', '2.45', '-3.49', '-3.37', '9.97'],
+                    ['Ti₁.₅V₁.₅C₂O₂ (y=1.5)', '-231.31', '4.42', '-3.30', '-3.15', '9.88'],
+                ]}
+            />
+            <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.6 }}>
+                物理趋势：ε_d 随 V 含量单调移向费米能级（Ti 位：-3.57 → -3.30 eV）；V 位 d 带中心始终高于 Ti 位；E0 随 y 单调抬升，每 V 磁矩递增（0 → 0.74 μB/V）——与"V d 态调制表面化学亲和性"的论文主线一致。
+            </Text>
+        </Box>
+
+    </Box>
+
+    <Box style={{ height: 59, background: '#F7F9FC', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 13, color: '#8B97A8' }}>V 合金化 Ti₃C₂ MXene · DFT 计算进展汇报</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#1E4FA8' }}>07 / 09</Text>
+    </Box>
+
+</Slide>

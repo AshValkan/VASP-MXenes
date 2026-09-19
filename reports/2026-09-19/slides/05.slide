@@ -1,0 +1,132 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <Box style={{ height: 72, background: '#0E3F8C', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>计算平台与自动化工作流</Text>
+        <Text style={{ fontSize: 15, color: '#A9C4EC', letterSpacing: 2 }}>02 · 平台与工作流</Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'column', gap: 14, padding: '20px 40px' }}>
+
+        <Box style={{ flexDirection: 'row', gap: 26, height: 461 }}>
+
+            <Box style={{ width: 620, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '12px 18px', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0E3F8C', marginBottom: 4 }}>自动化工作流（VASP-MXenes 定制）</Text>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 6, padding: '6px 12px' }}>
+                    <Box style={{ width: 34, height: 34, background: '#1E4FA8', borderRadius: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#1A2230' }}>alloy_config</Text>
+                        <Text style={{ fontSize: 12, color: '#4A5568' }}>成分 · 超胞 · 端基配置</Text>
+                    </Box>
+                </Box>
+                <Box style={{ height: 11, width: 34, marginLeft: 28, justifyContent: 'center', alignItems: 'center' }}>
+                    <FAIcon name='arrow-down' style={{ fill: '#8B97A8', width: 12, height: 12 }} />
+                </Box>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 6, padding: '6px 12px' }}>
+                    <Box style={{ width: 34, height: 34, background: '#1E4FA8', borderRadius: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#1A2230' }}>alloy.py 结构生成</Text>
+                        <Text style={{ fontSize: 12, color: '#4A5568' }}>POTCAR：Ti_pv · V_pv · C · O</Text>
+                    </Box>
+                </Box>
+                <Box style={{ height: 11, width: 34, marginLeft: 28, justifyContent: 'center', alignItems: 'center' }}>
+                    <FAIcon name='arrow-down' style={{ fill: '#8B97A8', width: 12, height: 12 }} />
+                </Box>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, background: '#E8EFF8', border: '1.5px solid #1E4FA8', borderRadius: 6, padding: '6px 12px' }}>
+                    <Box style={{ width: 34, height: 34, background: '#0E3F8C', borderRadius: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>3</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#0E3F8C' }}>opt 离子弛豫 · 4 成分点 × MPI-5</Text>
+                        <Text style={{ fontSize: 12, color: '#4A5568' }}>OSZICAR / OUTCAR 实时监控</Text>
+                    </Box>
+                    <Box style={{ background: '#1E4FA8', borderRadius: 9, padding: '3px 10px' }}>
+                        <Text style={{ fontSize: 12, color: '#FFFFFF' }}>运行中</Text>
+                    </Box>
+                </Box>
+                <Box style={{ height: 11, width: 34, marginLeft: 28, justifyContent: 'center', alignItems: 'center' }}>
+                    <FAIcon name='arrow-down' style={{ fill: '#8B97A8', width: 12, height: 12 }} />
+                </Box>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, background: '#FFFFFF', border: '1px dashed #8B97A8', borderRadius: 6, padding: '6px 12px' }}>
+                    <Box style={{ width: 34, height: 34, background: '#8B97A8', borderRadius: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>4</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#4A5568' }}>DOS 电子结构</Text>
+                        <Text style={{ fontSize: 12, color: '#8B97A8' }}>CONTCAR → 态密度 · d 带中心</Text>
+                    </Box>
+                    <Box style={{ background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 9, padding: '3px 10px' }}>
+                        <Text style={{ fontSize: 12, color: '#4A5568' }}>待执行</Text>
+                    </Box>
+                </Box>
+                <Box style={{ height: 11, width: 34, marginLeft: 28, justifyContent: 'center', alignItems: 'center' }}>
+                    <FAIcon name='arrow-down' style={{ fill: '#8B97A8', width: 12, height: 12 }} />
+                </Box>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, background: '#FFFFFF', border: '1px dashed #8B97A8', borderRadius: 6, padding: '6px 12px' }}>
+                    <Box style={{ width: 34, height: 34, background: '#8B97A8', borderRadius: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF' }}>5</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#4A5568' }}>run_alloy.py --analyze</Text>
+                        <Text style={{ fontSize: 12, color: '#8B97A8' }}>形成能 · 成分趋势汇总</Text>
+                    </Box>
+                    <Box style={{ background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 9, padding: '3px 10px' }}>
+                        <Text style={{ fontSize: 12, color: '#4A5568' }}>待执行</Text>
+                    </Box>
+                </Box>
+
+            </Box>
+
+            <Box style={{ flex: 1, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '12px 18px', flexDirection: 'column', gap: 10 }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#0E3F8C' }}>平台环境</Text>
+
+                <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 4 }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <FAIcon name='server' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#1A2230' }}>软件栈</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#4A5568', lineHeight: 1.55 }}>VASP 6.4.2（vasp_std）<br />OpenMPI 5.0.10 + PMIx 5.0.1<br />Python 3 独立虚拟环境</Text>
+                </Box>
+
+                <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 4 }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <FAIcon name='microchip' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#1A2230' }}>硬件</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#4A5568', lineHeight: 1.55 }}>Xeon E5-2630v4 × 2<br />20 物理核 / 40 线程 · 46 GB 内存<br />MPI 按物理核布局</Text>
+                </Box>
+
+                <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 4 }}>
+                    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                        <FAIcon name='code-branch' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#1A2230' }}>代码仓库</Text>
+                    </Box>
+                    <Text style={{ fontSize: 14, color: '#4A5568', lineHeight: 1.55 }}>fork AshValkan/VASP-MXenes<br />分支 alloy-mxene-tiv<br />自测 68/68 全部通过</Text>
+                </Box>
+            </Box>
+
+        </Box>
+
+        <Box style={{ height: 74, background: '#0E3F8C', borderRadius: 8, flexDirection: 'row', alignItems: 'center', gap: 14, padding: '0 24px' }}>
+            <FAIcon name='check-circle' style={{ fill: '#FFC107', width: 24, height: 24 }} />
+            <Text style={{ fontSize: 16, color: '#FFFFFF', lineHeight: 1.6 }}>
+                工作流全链路本地化并通过全部自测，成分扫描任务可复现、可扩展——新增成分点仅需增加配置项
+            </Text>
+        </Box>
+
+    </Box>
+
+    <Box style={{ height: 59, background: '#F7F9FC', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 13, color: '#8B97A8' }}>V 合金化 Ti₃C₂ MXene · DFT 计算进展汇报</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#1E4FA8' }}>05 / 09</Text>
+    </Box>
+
+</Slide>

@@ -1,0 +1,5 @@
+label,pattern,seed,host,dopant,y,supercell,E,path,dE_min,rank
+Ti3V0C2O2_s2x2_outer,outer,,Ti,V,0.0,s2x2,-236.3199926,MXenes_alloy/Ti3V0C2O2_s2x2_outer/ABC/HM/opt,0.0,1
+Ti2.5V0.5C2O2_s2x2_outer,outer,,Ti,V,0.5,s2x2,-234.98327697,MXenes_alloy/Ti2.5V0.5C2O2_s2x2_outer/ABC/HM/opt,0.0,1
+Ti2V1C2O2_s2x2_outer,outer,,Ti,V,1.0,s2x2,-233.10901361,MXenes_alloy/Ti2V1C2O2_s2x2_outer/ABC/HM/opt,0.0,1
+Ti1.5V1.5C2O2_s2x2_outer,outer,,Ti,V,1.5,s2x2,-231.30624993,MXenes_alloy/Ti1.5V1.5C2O2_s2x2_outer/ABC/HM/opt,0.0,1

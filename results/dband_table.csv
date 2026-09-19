@@ -1,0 +1,5 @@
+folder,nAtoms,spin,N(E_F),eps_d(Ti),w_d(Ti),skew_d(Ti),eps_d(Ti@outer_bottom),eps_d(Ti@inner1),eps_d(Ti@outer_top),label,pattern,seed,host,dopant,y,supercell,path,E_total,dE_min,eps_d(V),w_d(V),skew_d(V),eps_d(mix@outer_bottom),eps_d(mix@outer_top)
+DOS,28,sp,0.5462,-3.572,1.8132,-1.1425,-3.8129,-3.1026,-3.8129,Ti3V0C2O2_s2x2_outer,outer,,Ti,V,0.0,s2x2,MXenes_alloy/Ti3V0C2O2_s2x2_outer/ABC/HM/DOS,-236.319993,0.0,,,,,
+DOS,28,sp,7.9011,-3.5986,1.5362,-0.3654,,-3.0545,,Ti2.5V0.5C2O2_s2x2_outer,outer,,Ti,V,0.5,s2x2,MXenes_alloy/Ti2.5V0.5C2O2_s2x2_outer/ABC/HM/DOS,-234.983277,0.0,-3.3668,1.7899,0.0406,-3.7777,-3.7777
+DOS,28,sp,9.9746,-3.4936,1.4727,0.212,,-3.0258,,Ti2V1C2O2_s2x2_outer,outer,,Ti,V,1.0,s2x2,MXenes_alloy/Ti2V1C2O2_s2x2_outer/ABC/HM/DOS,-233.109014,0.0,-3.3679,1.8219,0.4062,-3.62,-3.62
+DOS,28,sp,9.8818,-3.2959,1.4678,-0.4127,,-3.0334,,Ti1.5V1.5C2O2_s2x2_outer,outer,,Ti,V,1.5,s2x2,MXenes_alloy/Ti1.5V1.5C2O2_s2x2_outer/ABC/HM/DOS,-231.30625,0.0,-3.1479,1.8769,0.0628,-3.2761,-3.2761

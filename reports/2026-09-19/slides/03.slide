@@ -1,0 +1,55 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', display: 'flex', flexDirection: 'column', padding: 0 }}>
+
+    <Box style={{ height: 72, background: '#0E3F8C', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#FFFFFF' }}>项目背景与科学目标</Text>
+        <Text style={{ fontSize: 15, color: '#A9C4EC', letterSpacing: 2 }}>01 · 项目背景</Text>
+    </Box>
+
+    <Box style={{ flex: 1, flexDirection: 'row', gap: 26, padding: '22px 40px' }}>
+
+        <Box style={{ width: 430, flexDirection: 'column', gap: 16 }}>
+            <Box style={{ flex: 1, background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 22px', flexDirection: 'column', gap: 10 }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='code-branch' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>项目定位</Text>
+                </Box>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.8 }}>
+                    fork <span style={{ fontWeight: 'bold', color: '#1A2230' }}>diegonti/VASP-MXenes</span> 的 <span style={{ fontWeight: 'bold', color: '#1A2230' }}>alloy-mxene-tiv</span> 分支（<span style={{ fontWeight: 'bold', color: '#1A2230' }}>AshValkan/VASP-MXenes</span>），在其单金属 MXene 工作流骨架上，扩展为可处理 <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>Ti₃₋ᵧVᵧC₂O₂ 双金属固溶体系</span>，并以 <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>d 带中心</span> 为核心描述符。
+                </Text>
+            </Box>
+
+            <Box style={{ background: '#0E3F8C', borderRadius: 8, padding: '16px 22px', flexDirection: 'column', gap: 8 }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FFFFFF' }}>合金化核心功能</Text>
+                <Text style={{ fontSize: 14, color: '#CFE0F5', lineHeight: 1.75 }}>
+                    结构建模与 VASP 输入自动生成 · d 带中心 / 形成能解析 · H/Li/Na/K 吸附与 CI-NEB 势垒 · 一键论文图表输出
+                </Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 14 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>三个科学问题</Text>
+
+            <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderLeft: '4px solid #1E4FA8', borderRadius: 6, padding: '14px 18px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230' }}>Q1 · V 占据外层还是内层？</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.6 }}>手段：<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>alloy.py</span> 生成 outer/inner 显式构型，<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>site_preference()</span> 给出能量差</Text>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderLeft: '4px solid #1E4FA8', borderRadius: 6, padding: '14px 18px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230' }}>Q2 · V 是否使 d 带中心移向费米能级？</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.6 }}>手段：<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>dband.py</span> 计算分元素、分原子层 ε_d，并给出线性拟合 R²</Text>
+            </Box>
+
+            <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderLeft: '4px solid #1E4FA8', borderRadius: 6, padding: '14px 18px', flexDirection: 'column', gap: 6 }}>
+                <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230' }}>Q3 · 电子结构如何传递至容量 / 倍率 / 循环？</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', lineHeight: 1.6 }}>手段：<span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>adsorption.py</span> 吸附能 + <span style={{ fontWeight: 'bold', color: '#0E3F8C' }}>neb.py</span> 势垒 + 实测交叉作图</Text>
+            </Box>
+        </Box>
+
+    </Box>
+
+    <Box style={{ height: 59, background: '#F7F9FC', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px' }}>
+        <Text style={{ fontSize: 13, color: '#8B97A8' }}>V 合金化 Ti₃C₂ MXene · DFT 计算进展汇报</Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#1E4FA8' }}>03 / 09</Text>
+    </Box>
+
+</Slide>

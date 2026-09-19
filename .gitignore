@@ -178,21 +178,57 @@ cython_debug/
 #.idea/
 
 # --- alloy extension (fork) ---
-MXenes_alloy/
 _selftest_work/
-results/
 _scratch/
 *.json.bak
 
-# --- analysis runs ---
-results/
-_*.log
-_*.json
+# --- VASP 运行时产物（大体积/可再生，一律不入库）---
+DOSout/
+CONTCARout/
+dband_results.json
+__pycache__/
+*.pyc
+_dband.log
+DOSout/
+CONTCARout/
+dband_results.json
+__pycache__/
+*.pyc
+
+# MXenes_alloy：只版本化"可复现该计算"的最小集合
+#   INCAR / KPOINTS / POSCAR（初始与生产输入）
+#   CONTCAR（收敛后的终态结构）
+#   OSZICAR（SCF 收敛证据）
+# 其余运行时产物（PCDAT/REPORT/vasp.err/vasp.out/OUTCAR/CHGCAR/WAVECAR/
+# vasprun.xml/DOSCAR）仍被下面的全局规则排除
+MXenes_alloy/**
+!MXenes_alloy/**/
+!MXenes_alloy/**/INCAR
+!MXenes_alloy/**/KPOINTS
+!MXenes_alloy/**/POSCAR
+!MXenes_alloy/**/CONTCAR
+!MXenes_alloy/**/OSZICAR
+
+# 全局排除的 VASP 输出
+PCDAT
+REPORT
+vasp.err
+vasp.out
+OUTCAR
+CHGCAR
+CHG
+WAVECAR
+vasprun.xml
+DOSCAR
+IBZKPT
+EIGENVAL
+
+# --- 分析结果（真实数据，入库）---
+# results/ 已改为跟踪：dband_table / energetics / adsorption 等 CSV 与图
+# 服务器运行时产生的临时结果目录仍排除
+_run/
 
 # --- analysis runs ---
-results/
 _*.log
 _*.json
 dband_results.json
-DOSout/
-CONTCARout/

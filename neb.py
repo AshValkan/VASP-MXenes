@@ -183,8 +183,7 @@ def neb_incar(n_images: int, encut: float = 550, ediff: str = "1E-06",
               "# ---------- IO ----------",
               "ISTART = 0", "INIWAV = 1", "NWRITE = 2",
               "LWAVE  = .FALSE.", "LCHARG = .FALSE.",
-              "LDIPOL = .TRUE.", "IDIPOL = 3",
-              ""]
+              ""]  # dipole correction dropped: DIPOL ref must be slab center
     return "\n".join(lines) + "\n"
 
 
