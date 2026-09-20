@@ -129,16 +129,11 @@ MXenes_alloy/Ti2V1C2O2_s2x2_outer/ABC/HM/
 ### 1. 获取代码
 
 ```bash
-# 方式 A：在 GitHub 上 fork diegonti/VASP-MXenes
+#fork VASP-MXenes
 git clone https://github.com/AshValkan/VASP-MXenes.git
 cd VASP-MXenes
-git remote add upstream https://github.com/diegonti/VASP-MXenes.git
 git checkout alloy-mxene-tiv        # 若 fork 未带该分支：git fetch origin alloy-mxene-tiv
 
-# 方式 B：从上游裸克隆后自建分支
-git clone https://github.com/diegonti/VASP-MXenes.git
-cd VASP-MXenes
-git checkout -b alloy-mxene-tiv
 ```
 
 ### 2. Python 环境
@@ -166,14 +161,7 @@ pip install pymatgen                # 可选：NEB 的 IDPP
 ### 4. 集群脚本
 
 把你的作业调度脚本放到 `car/script`（上游示例为 IQTC / MN4 的 SGE 脚本），
-VASP 可执行文件名也在此处指定。
-
-### 5. 设置 git 身份（首次提交前）
-
-```bash
-git config user.name  "你的名字"
-git config user.email "你的邮箱"
-```
+VASP 二进制也在此处指定。
 
 ---
 
@@ -299,7 +287,7 @@ python neb.py ini.vasp fin.vasp -o NEB -n 5 --potcar <POTCAR>
 python neb.py --analyze -o NEB        # → E_a_forward / E_a_reverse / TS_image
 ```
 
-### 示例 5：一键出论文图
+### 示例 5：一键出图
 
 ```bash
 python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.json \
@@ -314,8 +302,8 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
 ## 八、注意事项
 
 **许可与合规**
-- VASP 与 POTCAR 均需授权，**不得**随仓库公开分发。公开 fork 前请确认 `PP/` 已被 `.gitignore` 排除。
-- 上游原作者文档已完整保留在 `README_upstream.md`。
+- VASP 与 POTCAR 均需授权，**不**随仓库公开分发。在你提交前请确认你的 `PP/` 已被 `.gitignore` 排除。
+- 上游原作者文档位于 `README_upstream.md`。
 
 **计算参数**
 - `LORBIT = 11` 是 `dband.py` 的硬前提；缺少它 DOSCAR 无 lm 分解，ε_d 无法计算。
@@ -333,7 +321,7 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
 **软件与环境**
 - 已适配 numpy 2.x：`ndarray.ptp()` 与 `np.nanptp` 在 2.0 后不可用，勿改回。
 - POTCAR 查找路径是相对当前工作目录的 `./PP/...`，**请在仓库根目录运行脚本**。
-- Windows 下 git-bash 的 `/tmp` 与 Python 不互通，临时文件请放在仓库内。
+- 涉及到使用wsl环境的，Windows 下 git-bash 的 `/tmp` 与 Python 不互通，临时文件请放在项目内。
 - 输出文件名按 key 全量 sanitize，`eps_d(Ti)` / `eps_d(V)` 分别输出，不会互相覆盖。
 
 **数据处理**
