@@ -37,8 +37,8 @@
 - 一条命令输出论文图表：ε_d vs y、ε_d + E_ads + 实测 C_g 三联图
 
 **工程化**
-- `alloy_config.yaml` 是体系与计算参数的**唯一来源**，论文中的每个数字都可追溯
-- `tests/selftest.py`：**68 项自检，约 3 秒，不需要 VASP**
+- `alloy_config.yaml` 是体系与计算参数的**唯一来源**
+- `tests/selftest.py`：**68 项自检，不需要 VASP**
 - `tests/make_fake_results.py`：伪造完整结果树，在真 VASP 跑通前即可预演分析流程
 
 ---
@@ -315,7 +315,7 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
   `pattern=inner` 时下方是 V——两者通过**完全不同**的机制影响吸附，不可当作两个随机猜测。
 - 分数组分需要**公度超胞**：`y=0.5` / `1.5` 要求超胞面积为偶数（2×2 可行，3×3 不可行）。
   `suggest_supercell()` 会给出最小可行胞（**面积优先**，方正次之——先小后方正可省下约 20 倍算力）。
-- `V₃C₂Tₓ 无法实验合成`，在此仅作为 E_mix 的计算端点，论文中应主动说明。
+- `V₃C₂Tₓ 仅作为 E_mix 的计算端点。
 - 吸附参考态（½E(H₂)、体相 Li/Na/K）**必须用你自己的赝势和泛函计算**，不可引用文献数值。
 
 **软件与环境**
