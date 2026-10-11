@@ -1,6 +1,6 @@
 #!/bin/bash
 # Foreground launcher: detaches the adaptive adsorption queue runner and returns.
-BASE=/home/atlas/calc/VASP-MXenes-alloy
+BASE=$HOME/calc/VASP-MXenes-alloy
 if pgrep -f 'bash run_ads_queue.sh' | grep -v $$ > /dev/null 2>&1; then
     echo "queue runner already alive"
 else

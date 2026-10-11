@@ -8,7 +8,7 @@ import os
 import re
 import shutil
 
-os.chdir('/home/atlas/calc/VASP-MXenes-alloy')
+os.chdir(os.path.expanduser('~/calc/VASP-MXenes-alloy'))
 from adsorption import make_adsorption_case
 
 CASES = ['Ti3V0C2O2', 'Ti2.5V0.5C2O2', 'Ti2V1C2O2', 'Ti1.5V1.5C2O2']

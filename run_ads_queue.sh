@@ -5,7 +5,7 @@
 # A job is launched only when a whole block is free (no vasp_std process
 # bound to any CPU inside the block). This prevents PRRTE's default
 # behaviour of cramming every job onto the first 5 cores.
-BASE=/home/atlas/calc/VASP-MXenes-alloy
+BASE=$HOME/calc/VASP-MXenes-alloy
 JOBS_FILE=$BASE/ads_alkali_queue.txt
 LOG=$BASE/ads_alkali_queue.log
 BLOCKS="0-9 10-19 20-29 30-39"

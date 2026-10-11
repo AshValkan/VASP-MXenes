@@ -21,11 +21,11 @@ CASE=$1
 NP=${2:-5}
 SUB=${3:-opt}
 CPUS=${4:-}
-BASE=/home/atlas/calc/VASP-MXenes-alloy/MXenes_alloy
+BASE=$HOME/calc/VASP-MXenes-alloy/MXenes_alloy
 DIR=$BASE/$CASE/ABC/HM/$SUB
-VASP=/home/atlas/calc/vasp_std
+VASP=$HOME/calc/vasp_std
 
-export LD_LIBRARY_PATH=/home/atlas/calc/pmix-5.0.1/lib:/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/calc/pmix-5.0.1/lib:/usr/local/lib:$LD_LIBRARY_PATH
 export PATH=/usr/local/bin:$PATH
 export OMP_NUM_THREADS=1
 

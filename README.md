@@ -47,12 +47,12 @@
 
 | 类别 | 名称 | 版本 | 必需 | 说明 |
 |---|---|:---:|:---:|---|
-| 语言 | Python | ≥ 3.9（实测 3.13） | ✅ | 仅标准库即可建模 |
-| 数值 | numpy | 2.5.x | ✅ | 已适配 numpy 2.x |
+| 语言 | Python | ≥ 3.9 | ✅ | 仅标准库即可建模 |
+| 数值 | numpy | 2.5.x | ✅ | 兼容 numpy 2.x |
 | 绘图 | matplotlib | 3.11.x | ✅ | Agg 后端，无需显示器 |
 | 配置 | PyYAML | 6.x | ✅ | 读取 `alloy_config.yaml` |
 | 结构 | pymatgen | — | ⬜ | 仅 NEB 的 IDPP 初始猜测需要；缺失时自动降级为线性插值 |
-| 求解器 | **VASP** | 5.4.1+ / 6.x | ✅ | PAW-PBE；**NEB 需 VTST 编译版**（`vasp_vtst`） |
+| 求解器 | **VASP** | 5.4.1+ / 6.x | ✅ | PAW-PBE；NEB 用 VASP 原生 LCLIMB（无需 VTST） |
 | 辅助 | VASPKIT / Multiwfn / VESTA | — | ⬜ | 后处理与可视化 |
 
 > **VASP 与 POTCAR 均需授权许可，不随本仓库分发。**
@@ -319,7 +319,7 @@ python run_alloy.py --analyze --exp tests/measured.json --ads tests/adsorption.j
 - 吸附参考态（½E(H₂)、体相 Li/Na/K）**必须用你自己的赝势和泛函计算**，不可引用文献数值。
 
 **软件与环境**
-- 已适配 numpy 2.x：`ndarray.ptp()` 与 `np.nanptp` 在 2.0 后不可用，勿改回。
+- 兼容 numpy 2.x：`ndarray.ptp()` 与 `np.nanptp` 在 2.0 后不可用，勿改回。
 - POTCAR 查找路径是相对当前工作目录的 `./PP/...`，**请在仓库根目录运行脚本**。
 - 涉及到使用wsl环境的，Windows 下 git-bash 的 `/tmp` 与 Python 不互通，临时文件请放在项目内。
 - 输出文件名按 key 全量 sanitize，`eps_d(Ti)` / `eps_d(V)` 分别输出，不会互相覆盖。
