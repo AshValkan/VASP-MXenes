@@ -58,6 +58,7 @@ DEFAULT_HEIGHT = {
     ("Li", "Otop"): 1.90,
     ("Na", "Otop"): 2.25,
     ("K", "Otop"): 2.65,
+    ("Zn", "Otop"): 1.95,     # Zn-O bond length
     ("Mg", "hollow"): 2.00,
     ("Zn", "hollow"): 1.90,
 }
